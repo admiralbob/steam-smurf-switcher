@@ -1,55 +1,67 @@
 ::By jfx.
 
 ECHO OFF
+setlocal enabledelayedexpansion
 
-:: DONT CHANGE THESE TWO!!!!!
+:: Dont change these two
 set currentuser=null
 set currentpassword=null
 
-:: Modify this to your steam path
-:: If you're 32bit comment the top line and uncomment the bottom one
+:: ---------------------------------------------------------------------------------------------------------
 
-::64 Bit with Steam located in Program Files(x86)\Steam\
+:: MODIFY THIS TO YOUR STEAM PATH IF IT ISNT THE DEFAULT PATH AND YOU AREN'T RUNNING 64BIT
+:: IF YOU ARE 64 BIT WITH DEFAULT SETTINGS, DON'T WORRY!
+:: 64 Bit with Steam located in Program Files(x86)\Steam\
+:: 32 bit with Steam located in Program Files\Steam\
 SET steampath="%programfiles(x86)%\Steam\steam.exe"
 
-::32 bit with Steam located in Program Files\Steam\ UNCOMMENT BELOW IF YOU'RE 32BIT
-::SET steampath="%programfiles%\Steam\steam.exe"
-
-REM If your steam is located somewhere else modify the top line to the full path, remember the speech marks!!
-
-
+:: ---------------------------------------------------------------------------------------------------------
 :: YOUR STEAM ACCOUNTS HERE
 :: MODIFY THE USERNAMEX AND PASSWORDX AFTER ACC_USERNAMEX
 
-SET acc_username1=changeme
-SET acc_password1=changeme
+SET acc_username[1]=changeme
+SET acc_password[1]=changeme
 
-SET acc_username2=changeme
-SET acc_password2=changeme
+SET acc_username[2]=changeme
+SET acc_password[2]=changeme
 
-SET acc_username3=changeme
-SET acc_password3=changeme
+SET acc_username[3]=changeme
+SET acc_password[3]=changeme
 
-SET acc_username4=changeme
-SET acc_password4=changeme
+SET acc_username[4]=changeme
+SET acc_password[4]=changeme
 
-SET acc_username5=changeme
-SET acc_password5=changeme
+SET acc_username[5]=changeme
+SET acc_password[5]=changeme
 
-SET acc_username6=changeme
-SET acc_password6=changeme
+SET acc_username[6]=changeme
+SET acc_password[6]=changeme
 
-SET acc_username7=changeme
-SET acc_password7=changeme
+SET acc_username[7]=changeme
+SET acc_password[7]=changeme
 
-SET acc_username8=changeme
-SET acc_password8=changeme
+SET acc_username[8]=changeme
+SET acc_password[8]=changeme
 
-SET acc_username9=changeme
-SET acc_password9=changeme
+SET acc_username[9]=changeme
+SET acc_password[9]=changeme
 
-::Script begins
+SET acc_username[10]=changeme
+SET acc_password[10]=changeme
 
+SET acc_username[10]=changeme
+SET acc_password[10]=changeme
+
+SET acc_username[11]=changeme
+SET acc_password[11]=changeme
+
+SET acc_username[12]=changeme
+SET acc_password[12]=changeme
+
+SET accounts=12
+:: ^^^^CHANGE THIS TO THE NUMBER OF ACCOUNTS YOU HAVE LISTED^^^^
+
+:: ---------------------------------------------------------------------------------------------------------
 CLS
 :MENU
 ECHO.
@@ -61,65 +73,19 @@ ECHO If this is your first time using this tool, read the steps below.
 ECHO To set your accounts close this window, then open the tool in notepad.
 ECHO The easiest way to do that is to right click on the tool and click edit.
 ECHO.
-ECHO 1 - %acc_username1%
-ECHO 2 - %acc_username2%
-ECHO 3 - %acc_username3%
-ECHO 4 - %acc_username4%
-ECHO 5 - %acc_username5%
-ECHO 6 - %acc_username6%
-ECHO 7 - %acc_username7%
-ECHO 8 - %acc_username8%
-ECHO 9 - %acc_username9%
-ECHO 0 - EXIT
+
+for /l %%n in (1,1,%accounts%) do (
+	ECHO %%n - !acc_username[%%n]!
+)
 ECHO.
 SET /P M=Type the number for the account then press ENTER: 
-IF %M%==1 (
-	set currentuser=%acc_username1%
-	set currentpassword=%acc_password1%
-	goto login
-)
-IF %M%==2 (
-	set currentuser=%acc_username2%
-	set currentpassword=%acc_password2%
-	goto login
-)
-IF %M%==3 (
-	set currentuser=%acc_username3%
-	set currentpassword=%acc_password3%
-	goto login
-)
-IF %M%==4 (
-	set currentuser=%acc_username4%
-	set currentpassword=%acc_password4%
-	goto login
-)
-IF %M%==5 (
-	set currentuser=%acc_username5%
-	set currentpassword=%acc_password5%
-	goto login
-)
-IF %M%==6 (
-	set currentuser=%acc_username6%
-	set currentpassword=%acc_password6%
-	goto login
-)
-IF %M%==7 (
-	set currentuser=%acc_username7%
-	set currentpassword=%acc_password7%
-	goto login
-)
-IF %M%==8 (
-	set currentuser=%acc_username8%
-	set currentpassword=%acc_password8%
-	goto login
-)
-IF %M%==9 (
-	set currentuser=%acc_username9%
-	set currentpassword=%acc_password9%
-	goto login
-)
-IF %M%==0 exit
 
+
+for /l %%n in (1, 1, %M%) do (
+   set currentuser=!acc_username[%%n]!
+   set currentpassword=!acc_password[%%n]!
+)
+goto login
 
 :login
 ECHO.

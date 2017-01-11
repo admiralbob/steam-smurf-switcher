@@ -1,5 +1,7 @@
-# steam-smurf-switcher
+# old-steam-smurf-switcher
 A Steam Smurf Switcher made in Batch.
+
+See the new python version.
 
 Setup instructions:
 
